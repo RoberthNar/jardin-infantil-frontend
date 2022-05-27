@@ -1,0 +1,8 @@
+<p>listar-producto works!</p>
+<div id="estudiantes">
+  <ul class="estudiantes">
+    <li *ngFor="let item of listaEstudiantes | async">
+      <span>{{item.id}}</span> {{item.descripcion}}
+    </li>
+  </ul>
+</div>

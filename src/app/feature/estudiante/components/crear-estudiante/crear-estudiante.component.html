@@ -1,0 +1,22 @@
+<h1>Registrar Estudiante</h1>
+<h3>Ejemplo validacion de formularios reactivos con directiva</h3>
+<form [formGroup]="estudianteForm" (ngSubmit)="cerar()">
+  <div class="row">
+    <div class="col-sm-2">
+      <label>Id:</label>
+    </div>
+    <div class="col-sm-4">
+      <input validar type="text" id="idEstudiante" name="idEstudiante" placeholder="Id estudiante" class="form-control"
+        formControlName="id">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2">
+      <label>Descripción:</label>
+    </div>
+    <div class="col-sm-4">
+      <input validar type="text" id="descripcionEstudiante" name="descripcion" placeholder="Descripción estudiante"
+        class="form-control" formControlName="descripcion">
+    </div>
+  </div>
+</form>
