@@ -1,1 +1,22 @@
-<p>crear-matricula works!</p>
+<h1>Registrar Matricula</h1>
+<h3>Ejemplo validacion de formularios reactivos con directiva</h3>
+<form [formGroup]="matriculaForm" (ngSubmit)="cerar()">
+  <div class="row">
+    <div class="col-sm-2">
+      <label>Id:</label>
+    </div>
+    <div class="col-sm-4">
+      <input validar type="text" id="idMatricula" name="idMatricula" placeholder="Id matricula" class="form-control"
+        formControlName="id">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2">
+      <label>Descripción:</label>
+    </div>
+    <div class="col-sm-4">
+      <input validar type="text" id="descripcionMatricula" name="descripcion" placeholder="Descripción matricula"
+        class="form-control" formControlName="descripcion">
+    </div>
+  </div>
+</form>

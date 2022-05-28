@@ -1,1 +1,8 @@
 <p>listar-pension works!</p>
+<div id="pensiones">
+  <ul class="pensiones">
+    <li *ngFor="let item of listaPensiones | async">
+      <span>{{item.id}}</span> {{item.descripcion}}
+    </li>
+  </ul>
+</div>

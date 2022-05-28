@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+
+import { MatriculaService } from './../../shared/service/matricula.service';
+import { Matricula } from './../../shared/model/matricula';
 
 @Component({
   selector: 'app-listar-matricula',
@@ -7,9 +11,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListarMatriculaComponent implements OnInit {
 
-  constructor() { }
+  public listaMatriculas: Observable<Matricula[]>;
 
-  ngOnInit(): void {
+  constructor(protected matriculaService: MatriculaService) { }
+
+  ngOnInit() {
+    this.listaMatriculas = this.matriculaService.consultar();
   }
 
 }

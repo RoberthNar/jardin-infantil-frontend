@@ -1,22 +1,70 @@
-<h1>Registrar Estudiante</h1>
-<h3>Ejemplo validacion de formularios reactivos con directiva</h3>
-<form [formGroup]="estudianteForm" (ngSubmit)="cerar()">
-  <div class="row">
-    <div class="col-sm-2">
-      <label>Id:</label>
-    </div>
-    <div class="col-sm-4">
-      <input validar type="text" id="idEstudiante" name="idEstudiante" placeholder="Id estudiante" class="form-control"
-        formControlName="id">
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-sm-12 col-md-10">
+      <form [formGroup]="estudianteForm" (ngSubmit)="enviarFormulario()" id="formCrearReserva">
+        <div class="card my-5">
+          <div class="card-header text-center" *ngIf="id!=undefined">
+            <h1>{{tituloActualizar}}</h1>
+          </div>
+
+          <div class="card-header text-center" *ngIf="id==undefined">
+            <h1>{{tituloCrear}}</h1>
+          </div>
+          <div class="card-body">
+
+            <div class="row">
+
+              <div [hidden]="true">
+                  <input formControlName="id" class="form-control" id="id">
+                  <label class="responsive" for="id">id</label>
+              </div>
+
+              <div class="col-sm-6">
+                <div class="form-floating mb-3">
+                  <input formControlName="nombreEstudiante" class="form-control" id="nombreEstudiante"
+                    [class]="(estudianteForm.controls.nombreEstudiante.valid ? 'form-control is-valid':'form-control is-invalid')">
+                  <label class="responsive" for="nombreEstudiante">nombre Usuario</label>
+                  <div *ngIf="estudianteForm.controls.nombreEstudiante.hasError('required')" class="invalid-feedback">
+                    El nombre del estudiante es requerido
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <div class="form-floating mb-3">
+                  <input formControlName="fechaNacimiento" type="date" class="form-control" id="fechaNacimiento"
+                    [class]="(estudianteForm.controls.fechaNacimiento.valid ? 'form-control is-valid':'form-control is-invalid')">
+                  <label class="responsive" for="fechaNacimiento">nombre Usuario</label>
+                  <div *ngIf="estudianteForm.controls.fechaNacimiento.hasError('required')" class="invalid-feedback">
+                    El nombre del estudiante es requerido
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <div class="form-floating mb-3">
+                  <input formControlName="nombreAcudiente" class="form-control" id="nombreAcudiente"
+                    [class]="(estudianteForm.controls.nombreAcudiente.valid ? 'form-control is-valid':'form-control is-invalid')">
+                  <label class="responsive" for="nombreAcudiente">nombre Usuario</label>
+                  <div *ngIf="estudianteForm.controls.nombreAcudiente.hasError('required')" class="invalid-feedback">
+                    El nombre del acudiente es requerido
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="card-footer text-center" *ngIf="id==undefined">
+              <button class="btn btn-success" type="submit" aria-label="Crear reserva"  *ngIf="estudianteForm.valid">Crear estudiante</button>
+              <a class="btn btn-danger" [routerLink]="['/estudiante/listar']" aria-label="Cancelar registro">Cancelar registro</a>
+            </div>
+
+            <div class="card-footer text-center" *ngIf="id!=undefined">
+              <button class="btn btn-success" type="submit" aria-label="Actualizar reserva"  *ngIf="estudianteForm.valid">Actualizar estudiante</button>
+              <a class="btn btn-danger" [routerLink]="['/estudiante/listar']" aria-label="Cancelar registro">Cancelar registro</a>
+            </div>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
-  <div class="row">
-    <div class="col-sm-2">
-      <label>Descripción:</label>
-    </div>
-    <div class="col-sm-4">
-      <input validar type="text" id="descripcionEstudiante" name="descripcion" placeholder="Descripción estudiante"
-        class="form-control" formControlName="descripcion">
-    </div>
-  </div>
-</form>
+</div>

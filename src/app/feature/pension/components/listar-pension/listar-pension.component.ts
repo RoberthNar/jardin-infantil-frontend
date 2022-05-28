@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+
+import { PensionService } from './../../shared/service/pension.service';
+import { Pension } from './../../shared/model/pension';
+
 
 @Component({
   selector: 'app-listar-pension',
@@ -6,10 +11,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./listar-pension.component.css']
 })
 export class ListarPensionComponent implements OnInit {
+  public listaPensiones: Observable<Pension[]>;
 
-  constructor() { }
+  constructor(protected pensionService: PensionService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.listaPensiones = this.pensionService.consultar();
   }
 
 }

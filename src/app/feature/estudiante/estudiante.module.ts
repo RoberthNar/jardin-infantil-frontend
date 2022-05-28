@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
-
-import { EstudianteRoutingModule } from './estudiante-routing.module';
-import { CrearEstudianteComponent } from './components/crear-estudiante/crear-estudiante.component';
-import { ListarEstudianteComponent } from './components/listar-estudiante/listar-estudiante.component';
-import { BorrarEstudianteComponent } from './components/borrar-estudiante/borrar-estudiante.component';
-import { EstudianteComponent } from './components/estudiante/estudiante.component';
 import { SharedModule } from '@shared/shared.module';
+
+import { CrearEstudianteComponent } from './components/crear-estudiante/crear-estudiante.component';
+import { EstudianteComponent } from './components/estudiante/estudiante.component';
+import { ListarEstudianteComponent } from './components/listar-estudiante/listar-estudiante.component';
+import { EstudianteRoutingModule } from './estudiante-routing.module';
 import { EstudianteService } from './shared/service/estudiante.service';
 
 
@@ -15,8 +14,7 @@ import { EstudianteService } from './shared/service/estudiante.service';
   declarations: [
     EstudianteComponent,
     CrearEstudianteComponent,
-    ListarEstudianteComponent,
-    BorrarEstudianteComponent
+    ListarEstudianteComponent
   ],
   imports: [
     EstudianteRoutingModule,

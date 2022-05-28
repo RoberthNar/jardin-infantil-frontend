@@ -1,8 +1,39 @@
-<p>listar-producto works!</p>
-<div id="estudiantes">
-  <ul class="estudiantes">
-    <li *ngFor="let item of listaEstudiantes | async">
-      <span>{{item.id}}</span> {{item.descripcion}}
-    </li>
-  </ul>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card shadow my-5 text-center">
+      <div class="card-header ">
+        <h1>
+          {{titulo}}
+        </h1>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table align-middle">
+            <thead class="table-dark">
+              <tr>
+                <th *ngFor="let columna of columnas">
+                  {{columna}}
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let estudiante of estudiantes; index as i">
+                <td>{{i + 1}}</td>
+                <td>{{estudiante.nombreEstudiante}}</td>
+                <td>{{estudiante.fechaNacimiento}}</td>
+                <td>{{estudiante.nombreAcudiente}}</td>
+                <td>
+                  <a type="button" class="btn btn-primary" [routerLink]="['/estudiante/actualizar', estudiante.id]" [id]="'btnActualizarEstudiante' + i">Actualizar</a>
+                  <button type="button" class="btn btn-danger" (click)="eliminar(estudiante)" [id]="'btnEliminarEstudiante' + i">Eliminar</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a class="btn btn-success my-2" [routerLink]="['/estudiante/crear']" id="linkCrearEstudiante">Agregar</a>
+      </div>
+    </div>
+  </div>
 </div>

@@ -1,14 +1,13 @@
 export class Estudiante {
   id: number;
   nombreEstudiante: string;
-  fechaEstudiante: string
-  nombreAcudiente: string
+  fechaNacimiento: string;
+  nombreAcudiente: string;
 
-  constructor(id: number, nombreEstudiante: string,
-    fechaEstudiante: string, nombreAcudiente: string) {
-      this.id = id;
-      this.nombreEstudiante = nombreEstudiante;
-      this.fechaEstudiante = fechaEstudiante;
-      this.nombreAcudiente = nombreAcudiente;
-    }
+  constructor(nombreEstudiante: string, fechaNacimiento: string, nombreAcudiente: string, id?: number) {
+    this.id = id;
+    this.nombreEstudiante = nombreEstudiante;
+    this.fechaNacimiento = fechaNacimiento;
+    this.nombreAcudiente = nombreAcudiente;
+  }
 }

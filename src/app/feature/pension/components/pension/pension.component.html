@@ -1,1 +1,8 @@
-<p>pension works!</p>
+<nav>
+  <a id="linkPension" routerLink="./" routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }">Pension</a>
+  <a id="linkCrearPension" routerLink="./crear" routerLinkActive="active">Crear pension</a>
+  <a id="linkBorrarPension" routerLink="./borrar" routerLinkActive="active">Borrar pension</a>
+  <a id="linkListarPension" routerLink="./listar" routerLinkActive="active">listar pension</a>
+</nav>
+<router-outlet></router-outlet>

@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes,  RouterModule } from '@angular/router';
 import { CrearEstudianteComponent } from './components/crear-estudiante/crear-estudiante.component';
 import { ListarEstudianteComponent } from './components/listar-estudiante/listar-estudiante.component';
-import { BorrarEstudianteComponent } from './components/borrar-estudiante/borrar-estudiante.component';
 import { EstudianteComponent } from './components/estudiante/estudiante.component';
 
 const routes: Routes = [
@@ -15,12 +14,12 @@ const routes: Routes = [
         component: CrearEstudianteComponent
       },
       {
-        path: 'listar',
-        component: ListarEstudianteComponent
+        path: 'actualizar/:id',
+        component: CrearEstudianteComponent
       },
       {
-        path: 'borrar',
-        component: BorrarEstudianteComponent
+        path: 'listar',
+        component: ListarEstudianteComponent
       }
     ]
   }

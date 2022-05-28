@@ -1,9 +1,21 @@
 export class Matricula {
-  id: string;
-    descripcion: string;
+  id: number;
+  idEstudiante: number;
+  idDocenteSala: number;
+  jornada: string;
+  fechaIngreso: string;
 
-    constructor(id: string, descripcion: string) {
-        this.id = id;
-        this.descripcion = descripcion;
-    }
+  constructor(
+    idEstudiante: number,
+    idDocenteSala: number,
+    jornada: string,
+    fechaIngreso: string,
+    id?: number
+  ) {
+    this.id = id;
+    this.idEstudiante = idEstudiante;
+    this.idDocenteSala = idDocenteSala;
+    this.jornada = jornada;
+    this.fechaIngreso = fechaIngreso;
+  }
 }

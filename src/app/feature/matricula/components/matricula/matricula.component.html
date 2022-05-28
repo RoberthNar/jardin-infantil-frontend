@@ -1,1 +1,8 @@
-<p>matricula works!</p>
+<nav>
+  <a id="linkMatricula" routerLink="./" routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }">Matricula</a>
+  <a id="linkCrearMatricula" routerLink="./crear" routerLinkActive="active">Crear matricula</a>
+  <a id="linkBorrarMatricula" routerLink="./borrar" routerLinkActive="active">Borrar matricula</a>
+  <a id="linkListarMatricula" routerLink="./listar" routerLinkActive="active">listar matricula</a>
+</nav>
+<router-outlet></router-outlet>

@@ -1,1 +1,7 @@
 <p>listar-matricula works!</p>
+<div id="matriculas">
+  <ul class="matriculas">
+    <li *ngFor="let item of listaMatriculas | async">
+      <span>{{item.id}}</span> {{item.descripcion}}
+    </li>
+  </ul>
