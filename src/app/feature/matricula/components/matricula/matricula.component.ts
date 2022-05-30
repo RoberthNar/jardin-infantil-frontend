@@ -9,7 +9,7 @@ export class MatriculaComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
 
 }

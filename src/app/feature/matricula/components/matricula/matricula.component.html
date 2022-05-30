@@ -1,8 +1,7 @@
-<nav>
-  <a id="linkMatricula" routerLink="./" routerLinkActive="active"
-    [routerLinkActiveOptions]="{ exact: true }">Matricula</a>
-  <a id="linkCrearMatricula" routerLink="./crear" routerLinkActive="active">Crear matricula</a>
-  <a id="linkBorrarMatricula" routerLink="./borrar" routerLinkActive="active">Borrar matricula</a>
-  <a id="linkListarMatricula" routerLink="./listar" routerLinkActive="active">listar matricula</a>
+<nav class="navbar bg-light">
+  <div>
+  <a id="linkCrearMatricula" routerLink="./crear" routerLinkActive="active" class="navbar-brand">Crear matricula</a>
+  <a id="linkListarMatricula" routerLink="./listar" routerLinkActive="active" class="navbar-brand">Listar matricula</a>
+  </div>
 </nav>
 <router-outlet></router-outlet>

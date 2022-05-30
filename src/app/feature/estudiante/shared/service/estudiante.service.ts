@@ -25,11 +25,11 @@ export class EstudianteService {
 
   public actualizar(estudiante: Estudiante) {
     return this.http.doPut<Estudiante, any>(`${environment.endpoint}/estudiantes/${estudiante.id}`,
-      estudiante, this.http.optsName('actualizar reservas'));
+      estudiante, this.http.optsName('actualizar Estudiante'));
   }
 
   public eliminar(estudiante: Estudiante) {
     return this.http.doDelete<any>(`${environment.endpoint}/estudiantes/${estudiante.id}`,
-      this.http.optsName('Eliminar Estudiente'));
+      this.http.optsName('Eliminar Estudiante'));
   }
 }

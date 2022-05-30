@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
 import { MatriculaService } from '../../shared/service/matricula.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-
-const LONGITUD_MINIMA_PERMITIDA_TEXTO = 3;
-const LONGITUD_MAXIMA_PERMITIDA_TEXTO = 20;
-
+import { Matricula } from './../../shared/model/matricula';
 
 @Component({
   selector: 'app-crear-matricula',
@@ -12,23 +10,47 @@ const LONGITUD_MAXIMA_PERMITIDA_TEXTO = 20;
   styleUrls: ['./crear-matricula.component.css']
 })
 export class CrearMatriculaComponent implements OnInit {
-  matriculaForm: FormGroup;
-  constructor(protected matriculaServices: MatriculaService) { }
+
+  public tituloCrear = 'Registar Matricula';
+  public matriculaForm: FormGroup;
+  public id = 0;
+  public matriculas: Matricula[] = [];
+
+  constructor(
+    protected matriculaServices: MatriculaService
+  ) { }
 
   ngOnInit() {
+    this.listarMatricula();
     this.construirFormularioMatricula();
   }
 
-  cerar() {
-    this.matriculaServices.guardar(this.matriculaForm.value);
+  public enviarFormulario() {
+    this.crearMatricula();
+  }
+
+  private crearMatricula() {
+    //this.matriculaForm.value.idEstudiante =  this.matriculaForm.value.nombreEstudiante;
+    console.log('datos');
+    console.log(this.matriculaForm.value);
+    this.matriculaServices.guardar(this.matriculaForm.value).subscribe(respuesta => {
+      console.log(respuesta);
+      this.matriculaForm.reset();
+    });
   }
 
   private construirFormularioMatricula() {
     this.matriculaForm = new FormGroup({
-      id: new FormControl('', [Validators.required]),
-      descripcion: new FormControl('', [Validators.required, Validators.minLength(LONGITUD_MINIMA_PERMITIDA_TEXTO),
-                                                             Validators.maxLength(LONGITUD_MAXIMA_PERMITIDA_TEXTO)])
+      id: new FormControl(0, [Validators.required]),
+      idEstudiante: new FormControl(null, [Validators.required]),
+      jornada: new FormControl('', [Validators.required]),
+      fechaIngreso: new FormControl('', [Validators.required]),
     });
   }
 
+  public listarMatricula() {
+    this.matriculaServices.consultarEstudianteSinMatricula().subscribe(respuesta => {
+      this.matriculas = respuesta;
+    });
+  }
 }

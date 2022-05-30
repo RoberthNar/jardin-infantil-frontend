@@ -1,22 +1,70 @@
-<h1>Registrar Matricula</h1>
-<h3>Ejemplo validacion de formularios reactivos con directiva</h3>
-<form [formGroup]="matriculaForm" (ngSubmit)="cerar()">
-  <div class="row">
-    <div class="col-sm-2">
-      <label>Id:</label>
-    </div>
-    <div class="col-sm-4">
-      <input validar type="text" id="idMatricula" name="idMatricula" placeholder="Id matricula" class="form-control"
-        formControlName="id">
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-sm-12 col-md-10">
+      <form [formGroup]="matriculaForm" (ngSubmit)="enviarFormulario()" id="formCrearReserva">
+        <div class="card my-5">
+          <div class="card-header text-center" *ngIf="id==undefined">
+            <h1>{{tituloCrear}}</h1>
+          </div>
+          <div class="card-body">
+
+            <div class="row">
+
+              <div [hidden]="true">
+                  <input formControlName="id" class="form-control" id="id">
+                  <label class="responsive" for="id">id</label>
+              </div>
+
+              <div class="col-sm-6">
+                <div class="form-floating mb-3">
+                  <select formControlName="idEstudiante" class="form-select" id="nombreEstudiante"
+                  [class]="(matriculaForm.controls.idEstudiante.valid ? 'form-control is-valid':'form-control is-invalid')"
+                  aria-label="Seleccionar Estudiante">
+                    <option *ngFor="let matricula of matriculas" [value]="matricula.id">{{matricula.nombreEstudiante}}</option>
+                  </select>
+                  <label class="responsive" for="idEstudiante">Estudiante</label>
+                  <div *ngIf="matriculaForm.controls.idEstudiante.hasError('required')" class="invalid-feedback">
+                    El Estudiante es requerido
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <div class="form-floating mb-3">
+                  <select class="form-select" aria-label="Seleccionar Jornada"
+                  formControlName="jornada" class="form-control" id="jornada"
+                    [class]="(matriculaForm.controls.jornada.valid ? 'form-control is-valid':'form-control is-invalid')">
+                    <option selected>Seleccionar Jornada</option>
+                    <option value="maniana">Mañana</option>
+                    <option value="completa">Completa</option>
+                  </select>
+                  <label class="responsive" for="jornada">Jornada</label>
+                  <div *ngIf="matriculaForm.controls.jornada.hasError('required')" class="invalid-feedback">
+                    La jornada es requerida
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <div class="form-floating mb-3">
+                  <input formControlName="fechaIngreso" type="date" class="form-control" id="fechaIngreso"
+                    [class]="(matriculaForm.controls.fechaIngreso.valid ? 'form-control is-valid':'form-control is-invalid')">
+                  <label class="responsive" for="fechaIngreso">Fecha Ingreso</label>
+                  <div *ngIf="matriculaForm.controls.fechaIngreso.hasError('required')" class="invalid-feedback">
+                    La fecha de ingreso es requerida
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="card-footer text-center" *ngIf="id!=undefined">
+              <button class="btn btn-success" type="submit" aria-label="Crear reserva"  *ngIf="matriculaForm.valid">Crear matricula</button>
+              <a class="btn btn-danger" [routerLink]="['/matricula/listar']" aria-label="Cancelar registro">Cancelar registro</a>
+            </div>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
-  <div class="row">
-    <div class="col-sm-2">
-      <label>Descripción:</label>
-    </div>
-    <div class="col-sm-4">
-      <input validar type="text" id="descripcionMatricula" name="descripcion" placeholder="Descripción matricula"
-        class="form-control" formControlName="descripcion">
-    </div>
-  </div>
-</form>
+</div>
+
