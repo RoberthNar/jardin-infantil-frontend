@@ -11,7 +11,6 @@ import { ListarPensionComponent } from './listar-pension.component';
 
 
 describe('ListarPensionComponent', () => {
-  let component: ListarPensionComponent;
   let fixture: ComponentFixture<ListarPensionComponent>;
   let pensionService: PensionService;
   const listaPensions: Pension[] = [
@@ -35,7 +34,6 @@ describe('ListarPensionComponent', () => {
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ListarPensionComponent);
-    component = fixture.componentInstance;
     pensionService = TestBed.inject(PensionService);
     spyOn(pensionService, 'consultar').and.returnValue(
       of(listaPensions)

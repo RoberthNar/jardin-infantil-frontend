@@ -27,8 +27,8 @@ describe('PensionService', () => {
 
   it('deberia Listar los pensions', () => {
     const listaPensions: Pension[] = [
-      new Pension(1,"Nombre 1", 1, "sala 1", "Docente 1", 'Completa', '2020-06-08', 1),
-      new Pension(2,"Nombre 2", 2, "sala 2", "Docente 2", 'Maniana', '2020-06-08', 2)
+      new Pension(1, 1, '2020-06-08', 1),
+      new Pension(1, 1, '2020-06-08', 1)
     ];
 
     service.consultar().subscribe(estudientes => {
@@ -42,7 +42,7 @@ describe('PensionService', () => {
 
   it('deberia Listar por Id un Pension', () => {
     const id = 1;
-    const pension: Pension = new Pension(1,"Nombre 1", 1, "sala 1", "Docente 1", 'Completa', '2020-06-08', 1);
+    const pension: Pension = new Pension(1, 1, '2020-06-08', 1);
 
     service.consultarPorId(id).subscribe(respuesta => {
       expect(respuesta).toBe(pension);
@@ -53,10 +53,10 @@ describe('PensionService', () => {
   });
 
   it('deberia Guardar un Pension', () => {
-    const pension: Pension = new Pension(1,"Nombre 1", 1, "sala 1", "Docente 1", 'Completa', '2020-06-08', 1);
+    const pension: Pension = new Pension(1, 1, '2020-06-08', 1);
 
     service.guardar(pension).subscribe(respuesta => {
-      expect(respuesta).toEqual(1);
+      expect(respuesta).toEqual(true);
     });
     const req = httpMock.expectOne(apiEndpoint);
     expect(req.request.method).toBe('POST');
@@ -64,7 +64,7 @@ describe('PensionService', () => {
   });
 
   it('deberia Eliminar un Pension', () => {
-    const pension: Pension = new Pension(1,"Nombre 1", 1, "sala 1", "Docente 1", 'Completa', '2020-06-08', 1);
+    const pension: Pension = new Pension(1, 1, '2020-06-08', 1);
 
     service.eliminar(pension).subscribe(respuesta => {
       expect(respuesta).toEqual(null);
