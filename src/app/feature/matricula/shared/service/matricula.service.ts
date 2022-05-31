@@ -27,11 +27,6 @@ export class MatriculaService {
       this.http.optsName('guardar matriculas'));
   }
 
-  public actualizar(estudiante: Matricula) {
-    return this.http.doPut<Matricula, any>(`${environment.endpoint}/estudiantes/${estudiante.id}`,
-      estudiante, this.http.optsName('actualizar Matricula'));
-  }
-
   public eliminar(matricula: Matricula) {
     return this.http.doDelete<boolean>(`${environment.endpoint}/matricula-estudiantes/${matricula.id}`,
       this.http.optsName('eliminar matriculas'));

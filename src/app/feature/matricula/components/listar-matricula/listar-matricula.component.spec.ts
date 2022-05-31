@@ -15,8 +15,8 @@ describe('ListarMatriculaComponent', () => {
   let fixture: ComponentFixture<ListarMatriculaComponent>;
   let matriculaService: MatriculaService;
   const listaMatriculas: Matricula[] = [
-    new Matricula(1, 1, 'Completa', '2020-06-08', 1),
-    new Matricula(1, 1, 'Completa', '2020-06-08', 2)
+    new Matricula(1,"Nombre 1", 1, "sala 1", "Docente 1", 'Completa', '2020-06-08', 1),
+    new Matricula(1,"Nombre 1", 1, "sala 1", "Docente 1", 'Completa', '2020-06-08', 2)
   ];
 
 

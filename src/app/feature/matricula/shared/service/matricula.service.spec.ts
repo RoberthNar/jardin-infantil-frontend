@@ -27,8 +27,8 @@ describe('MatriculaService', () => {
 
   it('deberia Listar los matriculas', () => {
     const listaMatriculas: Matricula[] = [
-      new Matricula(1, 1, 'Completa', '2020-06-08', 1),
-      new Matricula(2, 1, 'Completa', '2020-06-08', 1)
+      new Matricula(1,"Nombre 1", 1, "sala 1", "Docente 1", 'Completa', '2020-06-08', 1),
+      new Matricula(2,"Nombre 2", 2, "sala 2", "Docente 2", 'Maniana', '2020-06-08', 2)
     ];
 
     service.consultar().subscribe(estudientes => {
@@ -42,7 +42,7 @@ describe('MatriculaService', () => {
 
   it('deberia Listar por Id un Matricula', () => {
     const id = 1;
-    const matricula: Matricula = new Matricula(1, 1, 'Completa', '2020-06-08', 1);
+    const matricula: Matricula = new Matricula(1,"Nombre 1", 1, "sala 1", "Docente 1", 'Completa', '2020-06-08', 1);
 
     service.consultarPorId(id).subscribe(respuesta => {
       expect(respuesta).toBe(matricula);
@@ -53,7 +53,7 @@ describe('MatriculaService', () => {
   });
 
   it('deberia Guardar un Matricula', () => {
-    const matricula: Matricula = new Matricula(1, 1, 'Completa', '2020-06-08', 1);
+    const matricula: Matricula = new Matricula(1,"Nombre 1", 1, "sala 1", "Docente 1", 'Completa', '2020-06-08', 1);
 
     service.guardar(matricula).subscribe(respuesta => {
       expect(respuesta).toEqual(1);
@@ -63,19 +63,8 @@ describe('MatriculaService', () => {
     req.event(new HttpResponse<number>({ body: 1 }));
   });
 
-  it('deberia Actualizar un Matricula', () => {
-    const matricula: Matricula = new Matricula(1, 1, 'Completa', '2020-06-08', 1);
-
-    service.actualizar(matricula).subscribe(respuesta => {
-      expect(respuesta).toEqual(null);
-    });
-    const req = httpMock.expectOne(`${apiEndpoint}/${matricula.id}`);
-    expect(req.request.method).toBe('PUT');
-    req.event(new HttpResponse<any>());
-  });
-
   it('deberia Eliminar un Matricula', () => {
-    const matricula: Matricula = new Matricula(1, 1, 'Completa', '2020-06-08', 1);
+    const matricula: Matricula = new Matricula(1,"Nombre 1", 1, "sala 1", "Docente 1", 'Completa', '2020-06-08', 1);
 
     service.eliminar(matricula).subscribe(respuesta => {
       expect(respuesta).toEqual(null);

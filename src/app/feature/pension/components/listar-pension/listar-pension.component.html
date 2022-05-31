@@ -1,8 +1,42 @@
-<p>listar-pension works!</p>
-<div id="pensiones">
-  <ul class="pensiones">
-    <li *ngFor="let item of listaPensiones | async">
-      <span>{{item.id}}</span> {{item.descripcion}}
-    </li>
-  </ul>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card shadow my-5 text-center">
+      <div class="card-header ">
+        <h1>
+          {{titulo}}
+        </h1>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table align-middle">
+            <thead class="table-dark">
+              <tr>
+                <th *ngFor="let columna of columnas">
+                  {{columna}}
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let pension of pensiones; index as i">
+                <td>{{i + 1}}</td>
+                <td>{{pension.nombreEstudiante}}</td>
+                <td>{{pension.nombreDocente}}</td>
+                <td>{{pension.nombreSala}}</td>
+                <td>{{pension.jornada}}</td>
+                <td>{{pension.horasMulta}}</td>
+                <td>{{pension.mesPagado}}</td>
+                <td>{{pension.valorTotal}}</td>
+                <td>
+                  <button type="button" class="btn btn-danger" (click)="eliminar(pension)" [id]="'btnEliminarPension' + i">Eliminar</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a class="btn btn-success my-2" [routerLink]="['/pension/crear']" id="linkCrearPension">Agregar</a>
+      </div>
+    </div>
+  </div>
 </div>

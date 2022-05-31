@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 
 import { PensionService } from './../../shared/service/pension.service';
 import { Pension } from './../../shared/model/pension';
@@ -11,12 +10,29 @@ import { Pension } from './../../shared/model/pension';
   styleUrls: ['./listar-pension.component.css']
 })
 export class ListarPensionComponent implements OnInit {
-  public listaPensiones: Observable<Pension[]>;
 
-  constructor(protected pensionService: PensionService) { }
+  public titulo = 'Lista de Pension';
+  public columnas = ['#', 'Estudiante', 'Docente', 'Sala', 'jornada', 'Horas Multa', 'Mes Pagado', 'Valor Total', 'Acciones'];
+  public pensiones: Pension[] = [];
+
+  constructor(
+    protected pensionService: PensionService
+
+  ) { }
 
   ngOnInit() {
-    this.listaPensiones = this.pensionService.consultar();
+    this.listarPension();
   }
 
+  public eliminar(pension: Pension) {
+    this.pensionService.eliminar(pension).subscribe(() => {
+      this.listarPension();
+    });
+  }
+
+  private listarPension() {
+    this.pensionService.consultar().subscribe(respuesta => {
+      this.pensiones = respuesta;
+    });
+  }
 }
