@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { PensionService } from '../../shared/service/pension.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-const LONGITUD_MINIMA_PERMITIDA_TEXTO = 3;
-const LONGITUD_MAXIMA_PERMITIDA_TEXTO = 20;
+import { PensionService } from '../../shared/service/pension.service';
+import { Pension } from './../../shared/model/pension';
 
 @Component({
   selector: 'app-crear-pension',
@@ -11,23 +10,46 @@ const LONGITUD_MAXIMA_PERMITIDA_TEXTO = 20;
   styleUrls: ['./crear-pension.component.css']
 })
 export class CrearPensionComponent implements OnInit {
-  pensionForm: FormGroup;
-  constructor(protected pensionServices: PensionService) { }
+
+  public tituloCrear = 'Registar Pension';
+  public pensionForm: FormGroup;
+  public id = 0;
+  public pensiones: Pension[] = [];
+
+  constructor(
+    protected pensionServices: PensionService
+  ) { }
 
   ngOnInit() {
+    this.listarMatricula();
     this.construirFormularioPension();
   }
 
-  cerar() {
-    this.pensionServices.guardar(this.pensionForm.value);
+  public enviarFormulario() {
+    this.crearPension();
+  }
+
+  private crearPension() {
+    console.log('datos');
+    console.log(this.pensionForm.value);
+    this.pensionServices.guardar(this.pensionForm.value).subscribe(respuesta => {
+      console.log(respuesta);
+      this.pensionForm.reset();
+    });
   }
 
   private construirFormularioPension() {
     this.pensionForm = new FormGroup({
-      id: new FormControl('', [Validators.required]),
-      descripcion: new FormControl('', [Validators.required, Validators.minLength(LONGITUD_MINIMA_PERMITIDA_TEXTO),
-                                                             Validators.maxLength(LONGITUD_MAXIMA_PERMITIDA_TEXTO)])
+      id: new FormControl(0, [Validators.required]),
+      idEstudiante: new FormControl(null, [Validators.required]),
+      horasMulta: new FormControl('', [Validators.required]),
+      mesPagado: new FormControl('', [Validators.required]),
     });
   }
 
+  public listarMatricula() {
+    this.pensionServices.consultarEstudianteMatricula().subscribe(respuesta => {
+      this.pensiones = respuesta;
+    });
+  }
 }

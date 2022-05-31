@@ -30,9 +30,6 @@ export class CrearMatriculaComponent implements OnInit {
   }
 
   private crearMatricula() {
-    //this.matriculaForm.value.idEstudiante =  this.matriculaForm.value.nombreEstudiante;
-    console.log('datos');
-    console.log(this.matriculaForm.value);
     this.matriculaServices.guardar(this.matriculaForm.value).subscribe(respuesta => {
       console.log(respuesta);
       this.matriculaForm.reset();

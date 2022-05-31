@@ -1,22 +1,61 @@
-<h1>Registrar Pension</h1>
-<h3>Ejemplo validacion de formularios reactivos con directiva</h3>
-<form [formGroup]="pensionForm" (ngSubmit)="cerar()">
-  <div class="row">
-    <div class="col-sm-2">
-      <label>Id:</label>
-    </div>
-    <div class="col-sm-4">
-      <input validar type="text" id="idPension" name="idPension" placeholder="Id pension" class="form-control"
-        formControlName="id">
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-sm-12 col-md-10">
+      <form [formGroup]="pensionForm" (ngSubmit)="enviarFormulario()" id="formCrearReserva">
+        <div class="card my-5">
+          <div class="card-header text-center" *ngIf="id==undefined">
+            <h1>{{tituloCrear}}</h1>
+          </div>
+          <div class="card-body">
+
+            <div class="row">
+
+              <div [hidden]="true">
+                  <input formControlName="id" class="form-control" id="id">
+                  <label class="responsive" for="id">id</label>
+              </div>
+
+              <div class="col-sm-6">
+                <div class="form-floating mb-3">
+                  <select formControlName="idEstudiante" class="form-select" id="nombreEstudiante"
+                  [class]="(pensionForm.controls.idEstudiante.valid ? 'form-control is-valid':'form-control is-invalid')"
+                  aria-label="Seleccionar Estudiante">
+                    <option *ngFor="let pension of pensiones" [value]="pension.idEstudiante">{{pension.nombreEstudiante}}</option>
+                  </select>
+                  <label class="responsive" for="idEstudiante">Estudiante</label>
+                  <div *ngIf="pensionForm.controls.idEstudiante.hasError('required')" class="invalid-feedback">
+                    El Estudiante es requerido
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <div class="form-floating mb-3">
+                  <input formControlName="horasMulta" type="number" class="form-control" id="horasMulta">
+                  <label class="responsive" for="horasMulta">horasMulta</label>
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <div class="form-floating mb-3">
+                  <input formControlName="mesPagado" type="date" class="form-control" id="mesPagado"
+                    [class]="(pensionForm.controls.mesPagado.valid ? 'form-control is-valid':'form-control is-invalid')">
+                  <label class="responsive" for="mesPagado">Mes Pagado</label>
+                  <div *ngIf="pensionForm.controls.mesPagado.hasError('required')" class="invalid-feedback">
+                    El mes de pago es requerido
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="card-footer text-center" *ngIf="id!=undefined">
+              <button class="btn btn-success" type="submit" aria-label="Crear reserva"  *ngIf="pensionForm.valid">Crear pension</button>
+              <a class="btn btn-danger" [routerLink]="['/pension/listar']" aria-label="Cancelar registro">Cancelar registro</a>
+            </div>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
-  <div class="row">
-    <div class="col-sm-2">
-      <label>Descripción:</label>
-    </div>
-    <div class="col-sm-4">
-      <input validar type="text" id="descripcionPension" name="descripcion" placeholder="Descripción pension"
-        class="form-control" formControlName="descripcion">
-    </div>
-  </div>
-</form>
+</div>
+

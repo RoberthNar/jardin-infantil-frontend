@@ -13,6 +13,10 @@ export class PensionService {
     return this.http.doGet<Pension[]>(`${environment.endpoint}/pensiones/`, this.http.optsName('consultar pensiones'));
   }
 
+  public consultarEstudianteMatricula() {
+    return this.http.doGet<Pension[]>(`${environment.endpoint}/matricula-estudiantes/`, this.http.optsName('consultar matriculas'));
+  }
+
   public consultarPorId(id: number) {
     return this.http.doGet<Pension>(`${environment.endpoint}/calculo-pensiones/id/${id}`,
       this.http.optsName('Consultar Pension por ID Estudiante'));
