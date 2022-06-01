@@ -10,7 +10,8 @@ import { PensionService } from './pension.service';
 describe('PensionService', () => {
   let httpMock: HttpTestingController;
   let service: PensionService;
-  const apiEndpoint = `${environment.endpoint}/pension-estudiantes`;
+  const apiEndpoint = `${environment.endpoint}/pensiones`;
+  const apiEndpointControlador = `${environment.endpoint}/calculo-pensiones`;
 
   beforeEach(() => {
     const injector = TestBed.configureTestingModule({
@@ -25,22 +26,22 @@ describe('PensionService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('deberia Listar los pensions', () => {
-    const listaPensions: Pension[] = [
+  it('deberia Listar las pensiones', () => {
+    const listaPensiones: Pension[] = [
       new Pension(1, 1, '2020-06-08', 1),
-      new Pension(1, 1, '2020-06-08', 1)
+      new Pension(2, 2, '2020-06-09', 2)
     ];
 
-    service.consultar().subscribe(estudientes => {
-      expect(estudientes.length).toBe(2);
-      expect(estudientes).toEqual(listaPensions);
+    service.consultar().subscribe(pensiones => {
+      expect(pensiones.length).toBe(2);
+      expect(pensiones).toEqual(listaPensiones);
     });
     const req = httpMock.expectOne(apiEndpoint);
     expect(req.request.method).toBe('GET');
-    req.flush(listaPensions);
+    req.flush(listaPensiones);
   });
 
-  it('deberia Listar por Id un Pension', () => {
+  it('deberia Listar por Id una Pension', () => {
     const id = 1;
     const pension: Pension = new Pension(1, 1, '2020-06-08', 1);
 
@@ -56,9 +57,9 @@ describe('PensionService', () => {
     const pension: Pension = new Pension(1, 1, '2020-06-08', 1);
 
     service.guardar(pension).subscribe(respuesta => {
-      expect(respuesta).toEqual(true);
+      expect(respuesta).toEqual(1);
     });
-    const req = httpMock.expectOne(apiEndpoint);
+    const req = httpMock.expectOne(apiEndpointControlador);
     expect(req.request.method).toBe('POST');
     req.event(new HttpResponse<number>({ body: 1 }));
   });
@@ -69,7 +70,7 @@ describe('PensionService', () => {
     service.eliminar(pension).subscribe(respuesta => {
       expect(respuesta).toEqual(null);
     });
-    const req = httpMock.expectOne(`${apiEndpoint}/${pension.id}`);
+    const req = httpMock.expectOne(`${apiEndpointControlador}/${pension.id}`);
     expect(req.request.method).toBe('DELETE');
     req.event(new HttpResponse<any>());
   });

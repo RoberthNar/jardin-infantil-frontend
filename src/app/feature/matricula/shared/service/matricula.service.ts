@@ -10,7 +10,7 @@ export class MatriculaService {
   constructor(protected http: HttpService) {}
 
   public consultar() {
-    return this.http.doGet<Matricula[]>(`${environment.endpoint}/matricula-estudiantes/`, this.http.optsName('consultar matriculas'));
+    return this.http.doGet<Matricula[]>(`${environment.endpoint}/matricula-estudiantes`, this.http.optsName('consultar matriculas'));
   }
 
   public consultarEstudianteSinMatricula() {
@@ -23,12 +23,12 @@ export class MatriculaService {
   }
 
   public guardar(matricula: Matricula) {
-    return this.http.doPost<Matricula, boolean>(`${environment.endpoint}/matricula-estudiantes`, matricula,
+    return this.http.doPost<Matricula, any>(`${environment.endpoint}/matricula-estudiantes`, matricula,
       this.http.optsName('guardar matriculas'));
   }
 
   public eliminar(matricula: Matricula) {
-    return this.http.doDelete<boolean>(`${environment.endpoint}/matricula-estudiantes/${matricula.id}`,
+    return this.http.doDelete<any>(`${environment.endpoint}/matricula-estudiantes/${matricula.id}`,
       this.http.optsName('eliminar matriculas'));
   }
 }

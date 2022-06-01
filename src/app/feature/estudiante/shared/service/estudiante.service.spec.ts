@@ -48,7 +48,7 @@ describe('EstudianteService', () => {
     service.consultarPorId(id).subscribe(respuesta => {
       expect(respuesta).toBe(estudiante);
     });
-    const req = httpMock.expectOne(`${apiEndpoint}/${id}`);
+    const req = httpMock.expectOne(`${apiEndpoint}/id/${id}`);
     expect(req.request.method).toBe('GET');
     req.flush(estudiante);
   });

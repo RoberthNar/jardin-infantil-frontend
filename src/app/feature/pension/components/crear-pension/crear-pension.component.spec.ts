@@ -39,7 +39,7 @@ describe('CrearPensionComponent', () => {
   });
 
   it('deberia guardar pension', () => {
-    spyOn(service, 'guardar').and.returnValue(of(true));
+    spyOn(service, 'guardar').and.returnValue(of(1));
     component.pensionForm.controls.idEstudiante.setValue(1);
     component.pensionForm.controls.horasMulta.setValue(3);
     component.pensionForm.controls.mesPagado.setValue('2020-01-01');

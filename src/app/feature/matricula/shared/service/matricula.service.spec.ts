@@ -4,14 +4,14 @@ import { TestBed } from '@angular/core/testing';
 import { HttpService } from '@core/services/http.service';
 
 import { environment } from './../../../../../environments/environment';
-import { Matricula } from './../model/matricula';
+import { Matricula } from './../model/Matricula';
 import { MatriculaService } from './matricula.service';
 
 describe('MatriculaService', () => {
   let httpMock: HttpTestingController;
   let service: MatriculaService;
   const apiEndpoint = `${environment.endpoint}/matricula-estudiantes`;
-
+  const apiEndpointListarPorId = `${environment.endpoint}/estudiantes/id`;
   beforeEach(() => {
     const injector = TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
@@ -31,9 +31,9 @@ describe('MatriculaService', () => {
       new Matricula(2, 'Nombre 2', 2, 'sala 2', 'Docente 2', 'Maniana', '2020-06-08', 2)
     ];
 
-    service.consultar().subscribe(estudientes => {
-      expect(estudientes.length).toBe(2);
-      expect(estudientes).toEqual(listaMatriculas);
+    service.consultar().subscribe(matriculas => {
+      expect(matriculas.length).toBe(2);
+      expect(matriculas).toEqual(listaMatriculas);
     });
     const req = httpMock.expectOne(apiEndpoint);
     expect(req.request.method).toBe('GET');
@@ -47,23 +47,23 @@ describe('MatriculaService', () => {
     service.consultarPorId(id).subscribe(respuesta => {
       expect(respuesta).toBe(matricula);
     });
-    const req = httpMock.expectOne(`${apiEndpoint}/${id}`);
+    const req = httpMock.expectOne(`${apiEndpointListarPorId}/${id}`);
     expect(req.request.method).toBe('GET');
     req.flush(matricula);
   });
 
-  it('deberia Guardar un Matricula', () => {
+  it('deberia Guardar una Matricula', () => {
     const matricula: Matricula = new Matricula(1, 'Nombre 1', 1, 'sala 1', 'Docente 1', 'Completa', '2020-06-08', 1);
 
     service.guardar(matricula).subscribe(respuesta => {
-      expect(respuesta).toEqual(true);
+      expect(respuesta).toEqual(1);
     });
     const req = httpMock.expectOne(apiEndpoint);
     expect(req.request.method).toBe('POST');
     req.event(new HttpResponse<number>({ body: 1 }));
   });
 
-  it('deberia Eliminar un Matricula', () => {
+  it('deberia Eliminar una Matricula', () => {
     const matricula: Matricula = new Matricula(1, 'Nombre 1', 1, 'sala 1', 'Docente 1', 'Completa', '2020-06-08', 1);
 
     service.eliminar(matricula).subscribe(respuesta => {

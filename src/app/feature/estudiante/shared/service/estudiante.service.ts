@@ -13,9 +13,9 @@ export class EstudianteService {
     return this.http.doGet<Estudiante[]>(`${environment.endpoint}/estudiantes`, this.http.optsName('consultar Estudiantes'));
   }
 
-  public consultarPorId(id: number) {
-    return this.http.doGet<Estudiante>(`${environment.endpoint}/estudiantes/id/${id}`,
-      this.http.optsName('Consultar Estutienate por ID'));
+  public consultarPorId(idEstudiante: number) {
+    return this.http.doGet<Estudiante>(`${environment.endpoint}/estudiantes/id/${idEstudiante}`,
+      this.http.optsName('Consultar Estudiante por ID'));
   }
 
   public guardar(estudiante: Estudiante) {

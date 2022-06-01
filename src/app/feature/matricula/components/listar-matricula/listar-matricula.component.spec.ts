@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
 import { HttpService } from 'src/app/core/services/http.service';
 
@@ -11,6 +10,7 @@ import { ListarMatriculaComponent } from './listar-matricula.component';
 
 
 describe('ListarMatriculaComponent', () => {
+  let component: ListarMatriculaComponent;
   let fixture: ComponentFixture<ListarMatriculaComponent>;
   let matriculaService: MatriculaService;
   const listaMatriculas: Matricula[] = [
@@ -24,8 +24,7 @@ describe('ListarMatriculaComponent', () => {
       declarations: [ListarMatriculaComponent],
       imports: [
         CommonModule,
-        HttpClientModule,
-        RouterTestingModule
+        HttpClientTestingModule
       ],
       providers: [MatriculaService, HttpService]
     })
@@ -34,10 +33,27 @@ describe('ListarMatriculaComponent', () => {
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ListarMatriculaComponent);
+    component = fixture.componentInstance;
     matriculaService = TestBed.inject(MatriculaService);
-    spyOn(matriculaService, 'consultar').and.returnValue(
-      of(listaMatriculas)
-    );
+    spyOn(matriculaService, 'consultar').and.returnValue(of(listaMatriculas));
+    spyOn(matriculaService, 'eliminar').and.returnValue(of(null));
     fixture.detectChanges();
   });
+
+  it('deberia crear componente listar matriculas', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('deberia listar las matriculas', () => {
+    component['listarMatricula']();
+    expect(matriculaService.consultar).toHaveBeenCalled();
+    expect(2).toBeGreaterThanOrEqual(component.matriculas.length);
+  });
+
+  it('deberia eliminar la matricula', () => {
+    component.eliminar(listaMatriculas[0]);
+    expect(matriculaService.eliminar).toHaveBeenCalled();
+  });
+
+
 });
