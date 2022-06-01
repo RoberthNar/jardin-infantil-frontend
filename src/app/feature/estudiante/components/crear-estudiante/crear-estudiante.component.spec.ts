@@ -8,7 +8,7 @@ import { EstudianteService } from '../../shared/service/estudiante.service';
 
 import { CrearEstudianteComponent } from './crear-estudiante.component';
 
-fdescribe('CrearEstudianteComponent', () => {
+describe('CrearEstudianteComponent', () => {
   let component: CrearEstudianteComponent;
   let fixture: ComponentFixture<CrearEstudianteComponent>;
   let service: EstudianteService;

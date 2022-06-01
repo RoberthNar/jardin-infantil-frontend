@@ -30,8 +30,6 @@ export class CrearPensionComponent implements OnInit {
   }
 
   private crearPension() {
-    console.log('datos');
-    console.log(this.pensionForm.value);
     this.pensionServices.guardar(this.pensionForm.value).subscribe(respuesta => {
       console.log(respuesta);
       this.pensionForm.reset();
