@@ -23,7 +23,7 @@
                 <div class="form-floating mb-3">
                   <input formControlName="nombreEstudiante" class="form-control" id="nombreEstudiante"
                     [class]="(estudianteForm.controls.nombreEstudiante.valid ? 'form-control is-valid':'form-control is-invalid')">
-                  <label class="responsive" for="nombreEstudiante">nombre Usuario</label>
+                  <label class="responsive" for="nombreEstudiante">nombre estudiante</label>
                   <div *ngIf="estudianteForm.controls.nombreEstudiante.hasError('required')" class="invalid-feedback">
                     El nombre del estudiante es requerido
                   </div>
@@ -34,9 +34,9 @@
                 <div class="form-floating mb-3">
                   <input formControlName="fechaNacimiento" type="date" class="form-control" id="fechaNacimiento"
                     [class]="(estudianteForm.controls.fechaNacimiento.valid ? 'form-control is-valid':'form-control is-invalid')">
-                  <label class="responsive" for="fechaNacimiento">nombre Usuario</label>
+                  <label class="responsive" for="fechaNacimiento">Fecha nacimiento</label>
                   <div *ngIf="estudianteForm.controls.fechaNacimiento.hasError('required')" class="invalid-feedback">
-                    El nombre del estudiante es requerido
+                    La fecha de nacimiente del estudiante es requerido
                   </div>
                 </div>
               </div>
