@@ -3,7 +3,7 @@ export class Pension {
   idEstudiante: number;
   horasMulta: number;
   mesPagado: string;
-  
+
   constructor(
     idEstudiante: number,
     horasMulta: number,

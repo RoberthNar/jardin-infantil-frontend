@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row justify-content-center">
     <div class="col-sm-12 col-md-10">
-      <form [formGroup]="estudianteForm" (ngSubmit)="enviarFormulario()" id="formCrearReserva">
+      <form [formGroup]="estudianteForm" (ngSubmit)="enviarFormulario()" id="formCrearEstudiante">
         <div class="card my-5">
           <div class="card-header text-center" *ngIf="id!=undefined">
             <h1>{{tituloActualizar}}</h1>
@@ -15,8 +15,8 @@
             <div class="row">
 
               <div [hidden]="true">
-                  <input formControlName="id" class="form-control" id="id">
-                  <label class="responsive" for="id">id</label>
+                <input formControlName="id" class="form-control" id="id">
+                <label class="responsive" for="id">id</label>
               </div>
 
               <div class="col-sm-6">
@@ -51,16 +51,16 @@
                   </div>
                 </div>
               </div>
-
             </div>
-            <div class="card-footer text-center" *ngIf="id==undefined">
-              <button class="btn btn-success" type="submit" aria-label="Crear reserva"  *ngIf="estudianteForm.valid">Crear estudiante</button>
-              <a class="btn btn-danger" [routerLink]="['/estudiante/listar']" aria-label="Cancelar registro">Cancelar registro</a>
-            </div>
-
-            <div class="card-footer text-center" *ngIf="id!=undefined">
-              <button class="btn btn-success" type="submit" aria-label="Actualizar reserva"  *ngIf="estudianteForm.valid">Actualizar estudiante</button>
-              <a class="btn btn-danger" [routerLink]="['/estudiante/listar']" aria-label="Cancelar registro">Cancelar registro</a>
+            <div class="card-footer text-center">
+              <button class="btn btn-success" type="submit" aria-label="Crear reserva" id="botonCrearEstudiante"
+                *ngIf="estudianteForm.valid && id==undefined">Crear estudiante</button>
+              <button class="btn btn-success" type="submit" aria-label="Actualizar reserva"
+                id="botonActualizarEstudiante" *ngIf="estudianteForm.valid && id!=undefined">Actualizar
+                estudiante</button>
+              <a id="cancelarEstudiante" class="btn btn-danger" [routerLink]="['/estudiante/listar']"
+                aria-label="Cancelar registro">Cancelar
+                registro</a>
             </div>
           </div>
         </div>

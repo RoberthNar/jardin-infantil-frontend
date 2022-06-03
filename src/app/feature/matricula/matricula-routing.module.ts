@@ -2,13 +2,13 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CrearMatriculaComponent } from './components/crear-matricula/crear-matricula.component';
 import { ListarMatriculaComponent } from './components/listar-matricula/listar-matricula.component';
-import { MatriculaComponent } from './components/matricula/matricula.component';
+import { MenuMatriculaComponent } from './components/menu-matricula/menu-matricula.component';
 
 
 const routes: Routes = [
   {
     path: '',
-    component: MatriculaComponent,
+    component: MenuMatriculaComponent,
     children: [
       {
         path: 'crear',

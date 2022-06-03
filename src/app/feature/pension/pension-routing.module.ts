@@ -2,13 +2,13 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CrearPensionComponent } from './components/crear-pension/crear-pension.component';
 import { ListarPensionComponent } from './components/listar-pension/listar-pension.component';
-import { PensionComponent } from './components/pension/pension.component';
+import { MenuPensionComponent } from './components/menu-pension/menu-pension.component';
 
 
 const routes: Routes = [
   {
     path: '',
-    component: PensionComponent,
+    component: MenuPensionComponent,
     children: [
       {
         path: 'crear',

@@ -1,18 +1,18 @@
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PensionComponent } from './pension.component';
+import { MenuEstudianteComponent } from './menu-estudiante.component';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
 
 
-describe('PensionComponent', () => {
-  let component: PensionComponent;
-  let fixture: ComponentFixture<PensionComponent>;
+describe('MenuEstudianteComponent', () => {
+  let component: MenuEstudianteComponent;
+  let fixture: ComponentFixture<MenuEstudianteComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ PensionComponent ],
+      declarations: [ MenuEstudianteComponent ],
       imports: [
         CommonModule,
         HttpClientModule,
@@ -23,7 +23,7 @@ describe('PensionComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PensionComponent);
+    fixture = TestBed.createComponent(MenuEstudianteComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -32,4 +32,3 @@ describe('PensionComponent', () => {
     expect(component).toBeTruthy();
   });
 });
-

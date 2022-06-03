@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from '@shared/shared.module';
 
 import { CrearPensionComponent } from './components/crear-pension/crear-pension.component';
-import { PensionComponent } from './components/pension/pension.component';
+import { MenuPensionComponent } from './components/menu-pension/menu-pension.component';
 import { ListarPensionComponent } from './components/listar-pension/listar-pension.component';
 import { PensionRoutingModule } from './pension-routing.module';
 import { PensionService } from './shared/service/pension.service';
@@ -13,7 +13,7 @@ import { PensionService } from './shared/service/pension.service';
   declarations: [
     CrearPensionComponent,
     ListarPensionComponent,
-    PensionComponent
+    MenuPensionComponent
   ],
   imports: [
     PensionRoutingModule,

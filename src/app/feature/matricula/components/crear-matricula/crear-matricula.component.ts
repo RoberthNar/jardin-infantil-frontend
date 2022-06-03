@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { MatriculaService } from '../../shared/service/matricula.service';
 import { Matricula } from './../../shared/model/matricula';
@@ -15,9 +16,11 @@ export class CrearMatriculaComponent implements OnInit {
   public matriculaForm: FormGroup;
   public id = 0;
   public matriculas: Matricula[] = [];
+  public captura = '';
 
   constructor(
-    protected matriculaServices: MatriculaService
+    protected matriculaServices: MatriculaService,
+    private roter: Router
   ) { }
 
   ngOnInit() {
@@ -33,6 +36,10 @@ export class CrearMatriculaComponent implements OnInit {
     this.matriculaServices.guardar(this.matriculaForm.value).subscribe(respuesta => {
       console.log(respuesta);
       this.matriculaForm.reset();
+      this.roter.navigate(['/matricula/listar']);
+    }, error => {
+      this.captura = error.error.mensaje;
+      alert(this.captura);
     });
   }
 

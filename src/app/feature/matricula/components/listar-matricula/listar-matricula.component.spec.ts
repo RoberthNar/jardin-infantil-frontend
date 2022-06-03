@@ -45,7 +45,8 @@ describe('ListarMatriculaComponent', () => {
   });
 
   it('deberia listar las matriculas', () => {
-    component['listarMatricula']();
+    const listadoMatricula = 'listarMatricula';
+    component[listadoMatricula]();
     expect(matriculaService.consultar).toHaveBeenCalled();
     expect(2).toBeGreaterThanOrEqual(component.matriculas.length);
   });

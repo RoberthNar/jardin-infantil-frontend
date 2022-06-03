@@ -1,18 +1,18 @@
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MatriculaComponent } from './matricula.component';
+import { MenuPensionComponent } from './menu-pension.component';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
 
 
-describe('MatriculaComponent', () => {
-  let component: MatriculaComponent;
-  let fixture: ComponentFixture<MatriculaComponent>;
+describe('MenuPensionComponent', () => {
+  let component: MenuPensionComponent;
+  let fixture: ComponentFixture<MenuPensionComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ MatriculaComponent ],
+      declarations: [ MenuPensionComponent ],
       imports: [
         CommonModule,
         HttpClientModule,
@@ -23,7 +23,7 @@ describe('MatriculaComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MatriculaComponent);
+    fixture = TestBed.createComponent(MenuPensionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -32,3 +32,4 @@ describe('MatriculaComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+

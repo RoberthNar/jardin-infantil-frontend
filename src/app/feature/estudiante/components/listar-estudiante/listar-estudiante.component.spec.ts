@@ -45,7 +45,8 @@ describe('ListarEstudianteComponent', () => {
   });
 
   it('deberia listar los estudiantes', () => {
-    component['listarEstuciantes']();
+    const listadoEstudiantes = 'listarEstuciantes';
+    component[listadoEstudiantes]();
     expect(estudianteService.consultar).toHaveBeenCalled();
     expect(2).toBeGreaterThanOrEqual(component.estudiantes.length);
   });

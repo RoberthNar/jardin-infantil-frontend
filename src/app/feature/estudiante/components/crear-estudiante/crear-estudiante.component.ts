@@ -16,6 +16,7 @@ export class CrearEstudianteComponent implements OnInit {
   public tituloActualizar = 'Actualizar Estudiante';
   public estudianteForm: FormGroup;
   public id = 0;
+  public captura = '';
 
   constructor(
     protected estudianteServices: EstudianteService,
@@ -44,6 +45,10 @@ export class CrearEstudianteComponent implements OnInit {
     this.estudianteServices.guardar(this.estudianteForm.value).subscribe(respuesta => {
       console.log(respuesta);
       this.estudianteForm.reset();
+      this.roter.navigate(['/estudiante/listar']);
+    }, error => {
+      this.captura = error.error.mensaje;
+      alert(this.captura);
     });
   }
 
@@ -81,4 +86,6 @@ export class CrearEstudianteComponent implements OnInit {
     }
 
   }
+
+
 }

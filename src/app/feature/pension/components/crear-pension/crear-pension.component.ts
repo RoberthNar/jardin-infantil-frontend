@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { PensionService } from '../../shared/service/pension.service';
 import { Pension } from './../../shared/model/pension';
@@ -15,9 +16,11 @@ export class CrearPensionComponent implements OnInit {
   public pensionForm: FormGroup;
   public id = 0;
   public pensiones: Pension[] = [];
+  public captura = '';
 
   constructor(
-    protected pensionServices: PensionService
+    protected pensionServices: PensionService,
+    private roter: Router
   ) { }
 
   ngOnInit() {
@@ -33,6 +36,10 @@ export class CrearPensionComponent implements OnInit {
     this.pensionServices.guardar(this.pensionForm.value).subscribe(respuesta => {
       console.log(respuesta);
       this.pensionForm.reset();
+      this.roter.navigate(['/pension/listar']);
+    }, error => {
+      this.captura = error.error.mensaje;
+      alert(this.captura);
     });
   }
 

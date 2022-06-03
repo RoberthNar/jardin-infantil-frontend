@@ -45,7 +45,8 @@ describe('ListarPensionComponent', () => {
   });
 
   it('deberia listar las pensiones', () => {
-    component['listarPension']();
+    const listadoPension = 'listarPension';
+    component[listadoPension]();
     expect(pensionService.consultar).toHaveBeenCalled();
     expect(2).toBeGreaterThanOrEqual(component.pensiones.length);
   });

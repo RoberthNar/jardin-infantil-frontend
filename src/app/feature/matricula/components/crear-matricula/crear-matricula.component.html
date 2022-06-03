@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row justify-content-center">
     <div class="col-sm-12 col-md-10">
-      <form [formGroup]="matriculaForm" (ngSubmit)="enviarFormulario()" id="formCrearReserva">
+      <form [formGroup]="matriculaForm" (ngSubmit)="enviarFormulario()" id="formCrearMatricula">
         <div class="card my-5">
           <div class="card-header text-center" *ngIf="id==undefined">
             <h1>{{tituloCrear}}</h1>
@@ -58,8 +58,8 @@
 
             </div>
             <div class="card-footer text-center" *ngIf="id!=undefined">
-              <button class="btn btn-success" type="submit" aria-label="Crear reserva"  *ngIf="matriculaForm.valid">Crear matricula</button>
-              <a class="btn btn-danger" [routerLink]="['/matricula/listar']" aria-label="Cancelar registro">Cancelar registro</a>
+              <button class="btn btn-success" type="submit" aria-label="Crear reserva"  *ngIf="matriculaForm.valid" id="botonCrearMatricula">Crear matricula</button>
+              <a class="btn btn-danger" [routerLink]="['/matricula/listar']" aria-label="Cancelar registro" id="cancelarMatricula">Cancelar registro</a>
             </div>
           </div>
         </div>

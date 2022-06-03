@@ -23,7 +23,7 @@
                 <td>{{estudiante.fechaNacimiento}}</td>
                 <td>{{estudiante.nombreAcudiente}}</td>
                 <td>
-                  <a type="button" class="btn btn-primary" [routerLink]="['/estudiante/actualizar', estudiante.id]" [id]="'btnActualizarEstudiante' + i">Actualizar</a>
+                  <a class="btn btn-success" [routerLink]="['/estudiante/actualizar', estudiante.id]" [id]="'actualizarEstudiante' + i">Actualizar</a>
                   <button type="button" class="btn btn-danger" (click)="eliminar(estudiante)" [id]="'btnEliminarEstudiante' + i">Eliminar</button>
                 </td>
               </tr>
